@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+   <link rel="stylesheet" href="assets/css/calculator.css">
+</head>
+<body>
+    <div class="calculator">
+            <div class = "heading">
+                <h1> 
+                    Calculator
+                    <img src = "images/moon.png" id ="icon" align = "right" alt=""/>
+                </h1>
+            </div>
+            <div class="screen">
+                <h1 id="result"></h1>
+            </div>
+            <div class="cal-buttons">
+                <ul id="buttons">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li id="clear">C</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>+</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>-</li>
+                        <li>0</li>
+                        <li>x</li>
+                        <li>.</li>
+                        <li>÷</li>
+                        <li id="equals">=</li>
+                </ul>
+            </div>
+
+    </div>
+
+    <script>
+      var buttons =  document.getElementById("buttons");
+       var li = buttons.querySelectorAll("li");
+      var result = document.getElementById("result");
+    
+        
+       for(let i=0; i<li.length; i++){
+            li[i].addEventListener("click", function () { 
+                
+                if(this.innerHTML=="="){
+                    
+                    result.innerHTML = eval(result.innerHTML); 
+
+                }else{
+                    if(this.innerHTML=="÷"){
+                        result.innerHTML += "/";
+                    }else if(this.innerHTML == "x"){
+                        result.innerHTML += "*";
+
+                    }else if(this.innerHTML=='C'){
+                        result.innerHTML = "";
+                    }
+                    
+                    else{
+                        result.innerHTML += this.innerHTML;
+                    }
+
+                    
+                }
+               
+                
+
+             });
+       }
+       var icon = document.getElementById("icon");
+       icon.onclick = function(){
+        document.body.classList.toggle("dark-theme");
+        if(document.body.classList.contains("dark-theme")){
+            icon.src ="images/sun.png";
+        }
+        else{
+            icon.src = "images/moon.png";
+        }
+       }
+    </script>
+</body>
+</html>
